@@ -18,6 +18,11 @@ class issuebook{
                                            "A veilled Gazelle", "Harry Potter", 
                                            "Tom And Jerry", "Animal Firm",
                                            "Food And Pen"};
+                                           
+         for(int i=0;i<bookname.Length;i++)
+        {
+            Console.WriteLine($"{i+1} {bookname[i]}");
+        }                    
         
         Console.WriteLine("Enter the book name you want to issue :");
         string inputBook = Console.ReadLine();
@@ -42,6 +47,35 @@ class issuebook{
             Console.WriteLine($"{inputBook} book is not available!");
             Environment.Exit(0);  
         }
+        
+          Console.WriteLine("Please enter the exact date when you want to return : follow the \"dd/mm/yyyy\" format: ");
+            Console.Write("---------------------------------------------------------------------------------------\n");
+            d=Console.ReadLine();
+        
+        DateTime dateTime = DateTime.Now;
+        
+        Console.WriteLine($"Congratulation!, {inputBook} issued successfully on {dateTime} \nRequest to return on the date of {d}");
+        
+    }
+}
+
+
+
+
+class returnbook : issuebook {
+  
+    public void Return(){
+        
+        Console.Write("Enter your name :");
+        string username = Console.ReadLine();
+        
+        Console.Write("Enter book name which you want to return :");
+        string returnBook = Console.ReadLine();
+        
+        Console.WriteLine($"{returnBook} is returned by {username}");
+       
+    }
+}
 
 class re_issueBook : issuebook
 {
