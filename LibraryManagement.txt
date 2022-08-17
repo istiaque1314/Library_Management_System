@@ -7,7 +7,9 @@ using System.Linq;     // library to use where clause
 
 class issuebook{
  
+    public string inputBook;
     public string d;
+    public bool flag = false;
   
     public void findbook(){
         Console.WriteLine("These books are available: ");
@@ -25,8 +27,7 @@ class issuebook{
         }                    
         
         Console.WriteLine("Enter the book name you want to issue :");
-        string inputBook = Console.ReadLine();
-        bool flag = false;        
+        inputBook = Console.ReadLine();       
         
         for(int i = 0; i<bookname.Length; i++) 
         {
@@ -64,24 +65,34 @@ class issuebook{
 
 class returnbook : issuebook {
   
+    public string username
     public void Return(){
         
         Console.Write("Enter your name :");
-        string username = Console.ReadLine();
+        username = Console.ReadLine();
         
         Console.Write("Enter book name which you want to return :");
-        string returnBook = Console.ReadLine();
+        inputBook = Console.ReadLine();
         
         Console.WriteLine($"{returnBook} is returned by {username}");
        
     }
 }
 
-class re_issueBook : issuebook
-{
+class re_issueBook : returnbook{
     
+    public void ReIssue()
+    
+      {
+        Console.Write("Enter your name :");
+        username = Console.ReadLine();
+        
+        Console.Write("Enter book name which you want to re_issue :");
+        inputBook = Console.ReadLine();
+        
+        Console.WriteLine($"{inputBook} is re issued to {username}");
+      }
 }
-
 
 class LibraryManagement {
   static void Main() {
@@ -94,6 +105,7 @@ class LibraryManagement {
     
     issuebook I1 =new issuebook();
     returnbook R1=new returnbook();
+    re_issueBook RR = new re_issueBook();
     int num=int.Parse(Console.ReadLine());
     switch(num)
     {
@@ -103,6 +115,9 @@ class LibraryManagement {
         case 2:
              R1.Return();
              break;
+        case 3:
+             RR.ReIssue();
+             break;  
         default:
              Console.WriteLine("Invalid Input");
              break;
